@@ -71,10 +71,10 @@ if __name__ == '__main__':
             if gui:  # Set up the top row of visuals
                 pad_val = 0  # Value to fix higher-dimensional values at when projecting landscapes into 2-D visuals
                 plt.subplot(231, projection='3d')
-                real_prob.plot_2d_problem(problem, xlim=problem.bounds, ylim=problem.bounds, pad=[pad_val]*(dim - 2), title="Fitness Landscape", ax=plt.gca())
+                real_prob.plot_2d_problem(problem, xlim=problem.bounds, ylim=problem.bounds, pad=np.array([pad_val]*(dim - 2)), title="Fitness Landscape", ax=plt.gca())
 
                 plt.subplot(232, projection='3d')
-                real_prob.plot_2d_function(eval_time_f, xlim=problem.bounds, ylim=problem.bounds, pad=[pad_val]*(dim - 2), title="Eval-Time Landscape", ax=plt.gca())
+                real_prob.plot_2d_function(eval_time_f, xlim=problem.bounds, ylim=problem.bounds, pad=np.array([pad_val]*(dim - 2)), title="Eval-Time Landscape", ax=plt.gca())
 
                 plt.subplot(233)  # Put the Gantt plot in the upper-right
                 p = co.GanttPlotProbe(ax=plt.gca(), max_bars=100, modulo=modulo)
@@ -98,7 +98,7 @@ if __name__ == '__main__':
             if gui:
                 plt.subplot(234)
                 p1 = probe.CartesianPhenotypePlotProbe(xlim=problem.bounds, ylim=problem.bounds,
-                                                contours=problem, pad=[pad_val]*(dim - 2), ax=plt.gca(), modulo=modulo)
+                                                contours=problem, pad=np.array([pad_val]*(dim - 2)), ax=plt.gca(), modulo=modulo)
                 
                 plt.subplot(235)
                 p2 = probe.FitnessPlotProbe(ax=plt.gca(), modulo=modulo,
